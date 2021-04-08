@@ -79,6 +79,7 @@ for(i in 1:length(genus_unique)) {
 }
 
 #randomly selecting 3 genus 
+set.seed(1)
 random_genus_3 <- sample(genus_unique_counts, 3)
 
 #select 3 sequences from each of the genus - 9 total strains and save in a dataframe 
