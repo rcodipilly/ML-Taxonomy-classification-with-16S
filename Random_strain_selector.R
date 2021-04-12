@@ -79,6 +79,7 @@ for(i in 1:length(genus_unique)) {
 }
 
 #randomly selecting 3 genus 
+set.seed(1)
 random_genus_3 <- sample(genus_unique_counts, 3)
 
 #select 3 sequences from each of the genus - 9 total strains and save in a dataframe 
@@ -91,5 +92,21 @@ for (i in 1:length(random_genus_3)) {
 
 #write randomly selected sequences into a csv file
 write.csv(random_sequences, file="random_test_seqs.csv")
+
+#randomly selecting 10 genus and all the strains from that 
+
+#randomly selecting 10 genus 
+set.seed(123)
+random_genus_10 <- sample(genus_unique_counts, 10)
+
+#looping through genus and getting all the sequences for the 10 selected genus 
+for (i in 1:length(random_genus_10)) {
+  random_seqs <- ssu_r95_df[ssu_r95_df$genus == random_genus_10[i],]
+  random_sequences10 <- rbind(random_sequences10, random_seqs)
+  i=i+1
+}
+
+#write selected sequences for 10 randomly selected genus into a csv file
+write.csv(random_sequences10, file="random_test_seqs10.csv")
 
 
